@@ -26,7 +26,6 @@ class RetroFitImplementation() {
     }
 
     private fun <T> enqueue(call: Call<T>, retroFitCallback: RetroFitCallback<T>)  {
-
         call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 retroFitCallback?.onResponse(call, response)
@@ -35,16 +34,12 @@ class RetroFitImplementation() {
                 retroFitCallback?.onFailure(call, throwable)
             }
         })
-
     }
 
     fun getDonutData(@HeaderMap headerMap : Map<String, String>, @QueryMap queryMap : Map<String, String>, retroFitCallback: RetroFitCallback<DonutDataModel>) {
-
         val request = retrofit.create(RetroFitApi::class.java)
         val call = request.getDonutData(headerMap, queryMap)
-
         enqueue(call, retroFitCallback)
-
     }
 
 }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">donutView</string>
+    <string name="refresh">Refresh</string>
+    <string name="your_score_is">Your score is</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="out_of">out of</string>
+    <string name="loading">Loading...</string>
 </resources>

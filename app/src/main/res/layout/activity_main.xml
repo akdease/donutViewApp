@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <TextView
+    <app.futured.donut.DonutProgressView
+        android:id="@+id/donut_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:donut_bgLineColor="@android:color/holo_orange_light"
+        app:donut_gapWidth="0"
+        app:donut_gapAngle="270"
+        app:donut_strokeWidth="7dp"
+        android:layout_centerInParent="true"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txtHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtSore"
+        android:layout_centerHorizontal="true"
+        android:text="@string/your_score_is"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/txtSore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/unavailable"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/txtFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSore"
+        android:layout_centerHorizontal="true"
+        android:text="@string/out_of"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/refresh"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
