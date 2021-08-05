@@ -1,8 +1,8 @@
-package com.paycode.donutview.activities
+package com.clearscore.donutview.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.paycode.donutview.R
+import com.clearscore.donutview.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

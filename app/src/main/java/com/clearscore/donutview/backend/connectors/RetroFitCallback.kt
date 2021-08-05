@@ -1,4 +1,4 @@
-package com.paycode.donutview.backend.connectors
+package com.clearscore.donutview.backend.connectors
 
 import retrofit2.Call
 import retrofit2.Response

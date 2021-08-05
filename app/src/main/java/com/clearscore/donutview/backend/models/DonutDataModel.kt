@@ -1,4 +1,4 @@
-package com.paycode.donutview.backend.models
+package com.clearscore.donutview.backend.models
 
 import java.io.Serializable
 

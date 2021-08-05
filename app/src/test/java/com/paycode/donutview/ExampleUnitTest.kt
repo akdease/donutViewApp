@@ -1,4 +1,4 @@
-package com.paycode.donutview
+package com.clearscore.donutview
 
 import org.junit.Test
 

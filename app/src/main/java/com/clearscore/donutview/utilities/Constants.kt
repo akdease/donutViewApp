@@ -1,4 +1,4 @@
-package com.paycode.donutview.utilities;
+package com.clearscore.donutview.utilities;
 
 class Constants {
     companion object {

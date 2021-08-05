@@ -1,7 +1,7 @@
-package com.paycode.donutview.backend.connectors
+package com.clearscore.donutview.backend.connectors
 
-import com.paycode.donutview.backend.models.DonutDataModel
-import com.paycode.donutview.utilities.Constants
+import com.clearscore.donutview.backend.models.DonutDataModel
+import com.clearscore.donutview.utilities.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
