@@ -43,7 +43,7 @@ class MainActivity : BaseActivity() {
         txtSore = findViewById(R.id.txtSore)
         txtFooter = findViewById(R.id.txtFooter)
 
-        btnRefresh.setOnClickListener({ requestData() })
+        btnRefresh.setOnClickListener{ requestData() }
     }
 
     fun requestData() {
