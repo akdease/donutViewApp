@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">donutView</string>
+    <string name="app_name">Donut View</string>
     <string name="refresh">Refresh</string>
     <string name="your_score_is">Your score is</string>
     <string name="unavailable">Unavailable</string>

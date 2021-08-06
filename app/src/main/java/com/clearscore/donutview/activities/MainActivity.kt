@@ -1,12 +1,13 @@
 package com.clearscore.donutview.activities
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import app.futured.donut.DonutProgressView
+import app.futured.donut.DonutSection
 import com.clearscore.donutview.R
 import com.clearscore.donutview.backend.connectors.RetroFitCallback
 import com.clearscore.donutview.backend.models.DonutDataModel
@@ -49,9 +50,7 @@ class MainActivity : BaseActivity() {
         var retroFitCallback = object : RetroFitCallback<DonutDataModel> {
             override fun onResponse(call: Call<DonutDataModel>, response: Response<DonutDataModel>) {
                 hideProgressDialog()
-                val donutDataModel : DonutDataModel? = response.body()
-                txtSore?.text = donutDataModel?.creditReportInfo?.score?.toString()
-                txtFooter?.text = getString(R.string.out_of) + " " + donutDataModel?.creditReportInfo?.maxScoreValue?.toString()
+                updateView(response)
             }
 
             override fun onFailure(call: Call<DonutDataModel>, throwable: Throwable) {
@@ -61,5 +60,22 @@ class MainActivity : BaseActivity() {
         }
 
         viewModel.getDonutData(this, retroFitCallback)
+    }
+
+    fun updateView(response: Response<DonutDataModel>) {
+        val donutDataModel : DonutDataModel? = response.body()
+
+        txtSore?.text = donutDataModel?.creditReportInfo?.score?.toString()
+        txtFooter?.text = getString(R.string.out_of) + " " + donutDataModel?.creditReportInfo?.maxScoreValue?.toString()
+
+        val section1 = DonutSection(
+            name = "section_1",
+            color = Color.parseColor("#FB1D32"),
+            amount = donutDataModel?.creditReportInfo?.score!!
+        )
+
+        donut_view.cap = donutDataModel?.creditReportInfo?.maxScoreValue
+        donut_view.submitData(listOf(section1))
+
     }
 }

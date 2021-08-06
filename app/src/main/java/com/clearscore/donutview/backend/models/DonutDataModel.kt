@@ -13,11 +13,11 @@ data class DonutDataModel (
 ) : Serializable
 
 data class CreditReportInfo (
-    val score: Int,
+    val score: Float,
     val scoreBand: Int,
     val clientRef: String,
     val status: String,
-    val maxScoreValue: Int,
+    val maxScoreValue: Float,
     val minScoreValue: Int,
     val monthsSinceLastDefaulted: Int,
     val hasEverDefaulted: Boolean,
