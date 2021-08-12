@@ -20,20 +20,33 @@ class DonutDataRepository : BaseRepository() {
         queryMap: HashMap<String, String>
     ): DonutDataModel? {
         if (shouldUseInternet(lastCallDate)) {
-            val response: Response<DonutDataModel> = retroFitImplementation?.getRetrofit()?.getDonutData(headerMap, queryMap)
-
-            val donutDataModel = response?.body() as DonutDataModel
-            donutDataModel?.isSuccessful = response?.isSuccessful
-            donutDataModel?.message = response?.message()
-
-            if (donutDataModel?.isSuccessful) {
-                lastCallDate = Calendar.getInstance()
-                storageManager?.saveObjectByKey(context, donutDataModel as Object, DonutDataModel::class.java.canonicalName)
-            }
-            return donutDataModel
+            return runCallAndCacheResponse(context, headerMap, queryMap)
         } else {
-            val obj: Object? = storageManager?.getObjectByKey(context, DonutDataModel::class.java.canonicalName)
+            val obj: Object? =
+                storageManager?.getObjectByKey(context, DonutDataModel::class.java.canonicalName)
             return obj as? DonutDataModel
         }
+    }
+
+    suspend fun runCallAndCacheResponse(
+        context: Context, headerMap: HashMap<String, String>,
+        queryMap: HashMap<String, String>
+    ): DonutDataModel? {
+        val response: Response<DonutDataModel> = retroFitImplementation?.getRetrofit()?.getDonutData(headerMap, queryMap)
+
+        val donutDataModel = response?.body() as DonutDataModel
+        donutDataModel?.isSuccessful = response?.isSuccessful
+        donutDataModel?.message = response?.message()
+
+        if (donutDataModel?.isSuccessful) {
+            lastCallDate = Calendar.getInstance()
+            storageManager?.saveObjectByKey(
+                context,
+                donutDataModel as Object,
+                DonutDataModel::class.java.canonicalName
+            )
+        }
+
+        return donutDataModel
     }
 }

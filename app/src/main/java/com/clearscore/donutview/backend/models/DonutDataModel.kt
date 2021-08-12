@@ -12,7 +12,7 @@ data class DonutDataModel (
     val coachingSummary: CoachingSummary,
     val augmentedCreditScore: Object //raw JSON response shows null, not sure of the structure here
 
-) : BaseDataModelClass(), Serializable
+) : BaseDataModel(), Serializable
 
 data class CreditReportInfo (
     val score: Float,

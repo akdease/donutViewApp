@@ -1,6 +1,7 @@
 package com.clearscore.donutview.repositories
 
 import com.clearscore.donutview.utilities.Constants
+import com.clearscore.donutview.utilities.TimeManager
 import java.util.*
 
 open class BaseRepository {
@@ -9,13 +10,7 @@ open class BaseRepository {
         if (oldDate == null)
             return true
 
-        val newDate = Calendar.getInstance()
-
-        val diff: Long = newDate.timeInMillis - oldDate.timeInMillis
-        val seconds = diff / 1000
-        val minutes = seconds / 60
-
-        return minutes >= Constants.API_CACHE_TIMEOUT_IN_MINUTES
+        return TimeManager().getTimeDifference(oldDate?.timeInMillis) >= Constants.API_CACHE_TIMEOUT_IN_MINUTES
     }
 
 }

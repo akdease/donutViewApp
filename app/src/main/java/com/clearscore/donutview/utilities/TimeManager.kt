@@ -4,18 +4,17 @@ import java.util.*
 
 class TimeManager {
 
-    fun getTimeDifference(start: Int, end: Int): Int {
-        return 0;
-    }
+    fun getTimeDifference(oldDate: Long?): Long {
+        if (oldDate == null)
+            return 0;
 
-    fun getTodaysDate(): Calendar {
-        return Calendar.getInstance();
-    }
+        val todaysDate = Calendar.getInstance()
+        val newDate: Long = todaysDate.timeInMillis
 
-    fun createDateFromLong(milliSeconds: Long): Calendar {
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = milliSeconds
-        return calendar
+        val diff: Long = newDate - oldDate
+        val seconds = diff / 1000
+        val minutes = seconds / 60
+        return minutes
     }
 
 }

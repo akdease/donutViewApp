@@ -13,8 +13,7 @@ import com.clearscore.donutview.activities.MainActivity
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import java.util.regex.Pattern.matches
 
 //import androidx.test.espresso.Espresso.click
@@ -31,17 +30,13 @@ class DonutUITest {
     var activityRule: ActivityScenarioRule<MainActivity> =
         ActivityScenarioRule(MainActivity::class.java)
 
-    @Before
-    fun initValidString() {
-        // Specify a valid string.
-        stringToBetyped = "Espresso"
-    }
-
     @Test
     fun test_RefreshButton() {
+        Thread.sleep(3000)
+
         onView(withId(R.id.btnRefresh))
             .perform(click())
-        /*onView(withId(R.id.txtMax))
-            .check(matches(isDisplayed()))*/
+        /*onView(withId(R.id.btnRefresh))
+            .check(matches(withText("Verifying...")))*/
     }
 }
