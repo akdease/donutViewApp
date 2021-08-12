@@ -3,6 +3,8 @@ package com.clearscore.donutview.backend.models
 import java.io.Serializable
 
 data class DonutDataModel (
+    override var isSuccessful: Boolean = false,
+    override var message: String = "",
     val accountIDVStatus: String,
     val creditReportInfo: CreditReportInfo,
     val dashboardStatus: String,
@@ -10,7 +12,7 @@ data class DonutDataModel (
     val coachingSummary: CoachingSummary,
     val augmentedCreditScore: Object //raw JSON response shows null, not sure of the structure here
 
-) : Serializable
+) : BaseDataModelClass(), Serializable
 
 data class CreditReportInfo (
     val score: Float,
